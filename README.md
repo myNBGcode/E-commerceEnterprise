@@ -102,7 +102,7 @@ CVC: 100 (valid CVC number for the test card)
 
 Enter the card details and all other required details for the transaction
 
-![alt text](https://github.com/myNBGcode/E-commerceEnterprise/images/card_details)
+![card details](https://github.com/myNBGcode/E-commerceEnterprise/images/card_details.png)
 
 In the following 3DS emulator choose &quot;Authentication successful&quot; and press &quot;Submit&quot;
 
