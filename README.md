@@ -144,6 +144,7 @@ The payment should be declined
 
 For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
 
+![reporting1](images/reporting.png)
  
  # Hosted Session
 
@@ -437,6 +438,7 @@ The payment should be declined
 
 For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
 
+![reporting2](images/reporting.png)
  
  # Direct API
 
@@ -503,6 +505,7 @@ The payment should be declined
 
 For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
 
+![reporting3](images/reporting.png)
 
 # Test results
 
