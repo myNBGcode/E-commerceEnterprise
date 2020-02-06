@@ -508,10 +508,10 @@ For each of the above transactions you can confirm the result from the merchant 
 
 After completing the test scenarios you can fill this table with the reference numbers of the transactions so that we can crosscheck the results
 
-| Transaction | Card Number | ACS Simulator | Expected Result | Input Data | Test Case | Data  Reference |  ID  |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Auth/Pre | 5123450000000008 |  Authenticated | ACCEPTED | Correct Data | 3D-Secure Authenticated |   |   |
-| Auth/Pre | 5123450000000008 |  NotAuthenticated | DECLINED | Correct Data | Not 3D-Secure Authenticated |   |   |
-| Auth/Pre | 5123450000000008 |   Attempted | ACCEPTED | Correct Data | 3D-Secure Attempted |   |   |
-| Auth/Pre | 5123450000000008 |   Unavailable | ACCEPTED | Correct Data | 3D-Secure Unavailable |   |   |
-| Auth/Pre | 5123450000000008 |  Authenticated | DECLINED | Wrong CVV (example 102) | 3D-Secure Authenticated |   |   |
+| Transaction | Card Number | ACS Simulator | Expected Result | Input Data | Test Case | Data  Reference |
+| --- | --- | --- | --- | --- | --- | --- |
+| Auth/Pre | 5123450000000008 |  Authenticated | ACCEPTED | Correct Data | 3D-Secure Authenticated |   |
+| Auth/Pre | 5123450000000008 |  NotAuthenticated | DECLINED | Correct Data | Not 3D-Secure Authenticated |   |
+| Auth/Pre | 5123450000000008 |   Attempted | ACCEPTED | Correct Data | 3D-Secure Attempted |   |
+| Auth/Pre | 5123450000000008 |   Unavailable | ACCEPTED | Correct Data | 3D-Secure Unavailable |   |
+| Auth/Pre | 5123450000000008 |  Authenticated | DECLINED | Wrong CVV (example 102) | 3D-Secure Authenticated |   |
