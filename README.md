@@ -67,7 +67,7 @@
 ```
 **Notes**
 
-- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered. More about callbacks in the documentation\*
+- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered.
 - In the checkout.configure function you provide a json object with the details of the transaction, as shown in the sample page above.
 - Inside the order element you can specify the amount (which can be dynamically calculated), the unique id number which you should provide but will be automatically generated if not and the reference number which you must provide to be able to match the transaction in your administrator page. The reference number can be for example a shopping cart number, an order number, or an invoice number.
 - Inside the interaction element the operation attribute can be set to PURCHASE for a payment operation or to AUTHORIZE if you want to capture the amount authorized later.
@@ -76,10 +76,7 @@
 - With Lightbox a popup window appears and the transaction is completed without redirecting the customer to another page
 - With Payment page the customer is redirected to the checkout page
 
-
-
-
-
+[Documentation about hosted checkout](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
