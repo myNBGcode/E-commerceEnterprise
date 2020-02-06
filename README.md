@@ -76,7 +76,7 @@
 - With Lightbox a popup window appears and the transaction is completed without redirecting the customer to another page
 - With Payment page the customer is redirected to the checkout page
 
-[Documentation about hosted checkout](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
+[Documentation for hosted checkout](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
