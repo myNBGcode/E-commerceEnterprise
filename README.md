@@ -35,7 +35,7 @@
                 merchant: 'Your merchant ID',
                 order: {
                     amount: function() {
-                        //You can dynamicaly calculate the amount
+                        //You can dynamically calculate the amount
                         return 80 + 20;
                     },
                     currency: 'EUR',
