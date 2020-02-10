@@ -67,7 +67,50 @@
 ```
 **Notes**
 
-- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered. For more information on how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_obtainThePaymentResult).
+- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered. Below you can see an example on how to redirect the customer back to your site after a transaction. First you need to request a session using the Create Checkout Session operation ([Documentation](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/operation/Session%3a%20Create%20Checkout%20Session.html?locale=en_US)). The request should include payment and interaction data, as well as completion instructions. Include the returned session.id in the Checkout.configure() request to the Mastercard Payment Gateway. In the example below we pass the redirectUrl in the create session request. You also have an option to pass it in a complete Callback call.  For more information on how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_obtainThePaymentResult).
+
+```
+{
+    "apiOperation": "CREATE_CHECKOUT_SESSION",
+    "order": {
+        "currency": "EUR",
+        "id": "{{$guid}}"
+    },
+    "interaction": {
+        "operation": "PURCHASE",
+        "returnUrl": "http://localhost:8080/hostedCheckout.html"
+    }
+}
+```
+```
+Checkout.configure({
+                version: '54',
+                merchant: 'Your merchant ID',
+                order: {
+                    amount: function() {
+                        //You can dynamically calculate the amount
+                        return 80 + 20;
+                    },
+                    currency: 'EUR',
+                    description: 'Ordered goods',
+                   id: 'Unique order ID',
+				   reference: 'Unique reference number'
+                },
+                interaction: {
+                    operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
+                    merchant: {
+                        name: 'Your merchant name',
+                        address: {
+                            line1: '200 Sample St',
+                            line2: '1234 Example Town'            
+                        }    
+                    }
+                },
+		session: {
+			id: 'SessionId'
+		}														
+            });
+```
 - In the checkout.configure function you provide a json object with the details of the transaction, as shown in the sample page above.
 - Inside the order element you can specify the amount (which can be dynamically calculated), the unique id number which you should provide but will be automatically generated if not and the reference number which you must provide to be able to match the transaction in your administrator page. The reference number can be for example a shopping cart number, an order number, or an invoice number.
 - Inside the interaction element the operation attribute can be set to PURCHASE for a payment operation or to AUTHORIZE if you want to capture the amount authorized later.
