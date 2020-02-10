@@ -85,7 +85,7 @@
     },
     "interaction": {
         "operation": "PURCHASE",
-        "returnUrl": "http://localhost:8080/hostedCheckout.html"
+        "returnUrl": "your website"
     }
 }
 ```
