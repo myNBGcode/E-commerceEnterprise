@@ -81,7 +81,7 @@
     "apiOperation": "CREATE_CHECKOUT_SESSION",
     "order": {
         "currency": "EUR",
-        "id": "{{$guid}}"
+        "id": "Unique order ID"
     },
     "interaction": {
         "operation": "PURCHASE",
