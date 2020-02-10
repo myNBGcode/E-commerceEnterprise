@@ -119,7 +119,7 @@ Checkout.configure({
 		}														
             });
 ```
-In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_obtainThePaymentResult).
+In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
 
 [Documentation for hosted checkout](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
