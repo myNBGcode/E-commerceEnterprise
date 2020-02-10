@@ -484,9 +484,7 @@ For each of the above transactions you can confirm the result from the merchant 
  
  # Direct API
 
-Documentation for the calls to the Payment Gateway:
-
-[https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en\_US](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
+[Documentation for the calls to the Payment Gateway:](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
 
