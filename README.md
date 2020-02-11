@@ -123,11 +123,12 @@ In the example above we pass the redirectUrl in the create session request. You 
 
 ### Tokenization via the hosted checkout
 You can tokenize a card by following these steps:
-1. Create a checkout session as [above](**Create-Checkout-Session-call-request:**)
+1. Create a checkout session as 
 2. Add the obtained sessionId in the checkout.Configure() method
-3. After the transaction is completed you need to execute a direct API call to tokenize the card. An example is shown below
+3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
+
 Url: "https://test.ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>" 
-Request:
+PUT request:
 ```
 	{
     "session": {
