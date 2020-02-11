@@ -131,7 +131,7 @@ Url: ``https://test.ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your me
 
 PUT request:
 ```
-	{
+{
     "session": {
         "id": "sessionId"
     }
