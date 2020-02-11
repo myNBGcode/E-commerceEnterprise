@@ -128,6 +128,7 @@ You can tokenize a card by following these steps:
 3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
 
 Url: ``https://test.ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>``
+
 PUT request:
 ```
 	{
@@ -136,8 +137,8 @@ PUT request:
     }
 }
 ```
-For more information on tokenization [see here](https://eu-gateway.mastercard.com/api/documentation/apiDocumentation/rest-json/version/latest/operation/Tokenization%3a%20%20Create%20or%20Update%20Token.html?locale=en_US
-	)
+For more information on tokenization [see here](https://eu-gateway.mastercard.com/api/documentation/apiDocumentation/rest-json/version/latest/operation/Tokenization%3a%20%20Create%20or%20Update%20Token.html?locale=en_US)
+
 [**Documentation for hosted checkout**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
 
