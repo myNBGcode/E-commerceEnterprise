@@ -121,6 +121,24 @@ Checkout.configure({
 ```
 In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
 
+### Tokenization via the hosted checkout
+You can tokenize a card by following these steps:
+1. Create a checkout session as above
+2. Add the obtained sessionId in the checkout.Configure() method
+3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
+
+Url: ``https://test.ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>``
+
+PUT request:
+```
+{
+    "session": {
+        "id": "sessionId"
+    }
+}
+```
+For more information on tokenization [see here](https://eu-gateway.mastercard.com/api/documentation/apiDocumentation/rest-json/version/latest/operation/Tokenization%3a%20%20Create%20or%20Update%20Token.html?locale=en_US)
+
 [**Documentation for hosted checkout**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
 
