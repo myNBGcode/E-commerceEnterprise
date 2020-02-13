@@ -9,6 +9,10 @@
 
 [Direct API](#Direct-API)
 
+[Credentials](https://files.nbg.gr/ecommerce/docs/i-Bank%20e-Enterprise%20API%20Credentials.docx)
+
+[Developer Guide](https://files.nbg.gr/ecommerce/docs/Integration%20Guide%20i-Bank%20e-Enterprise.pdf)
+
 ## [Save your test results](#Test-results)
 
 # Hosted checkout:
