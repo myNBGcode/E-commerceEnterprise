@@ -46,8 +46,8 @@
                     },
                     currency: 'EUR',
                     description: 'Ordered goods',
-                   id: 'Unique order ID',
-				   reference: 'Unique reference number'
+                    id: 'Unique order ID',
+                    reference: 'Unique reference number'
                 },
                 interaction: {
                     operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
@@ -59,7 +59,6 @@
                         }    
                     }
                 }
-																
             });
         </script>
     </head>
