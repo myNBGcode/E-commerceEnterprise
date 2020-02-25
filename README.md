@@ -222,7 +222,7 @@ In the following 3DS emulator choose &quot;Authentication Successful&quot; and p
 
 The payment should be declined
 
-For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
+For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting1](images/reporting.png)
  
@@ -516,7 +516,7 @@ After rendering the ACS emulator from the response choose &quot;Authentication S
 
 The payment should be declined
 
-For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
+For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting2](images/reporting.png)
  
@@ -581,7 +581,7 @@ After rendering the ACS emulator from the response choose &quot;Authentication S
 
 The payment should be declined
 
-For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
+For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting3](images/reporting.png)
 
@@ -1103,7 +1103,7 @@ After rendering the ACS emulator from the response choose &quot;Authentication S
 
 The payment should be declined
 
-For each of the above transactions you can confirm the result from the merchant administrator page using the reference number you provided.
+For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting2](images/reporting.png)
  
