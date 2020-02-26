@@ -67,6 +67,7 @@ if (self === top) {
 PaymentSession.configure({
     fields: {
         // Attach hosted fields to your payment page
+            session: "SESSION ID", // session ID as created from backend call CREATE_SESSION
             card: {
                 number: "#card-number",
                 securityCode: "#security-code",
