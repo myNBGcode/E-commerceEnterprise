@@ -23,7 +23,7 @@
 ```
 <html>
     <head>
-        <script src="https://test.ibanke-commerce.nbg.gr/checkout/version/54/checkout.js"
+        <script src="https://ibanke-commerce.nbg.gr/checkout/version/54/checkout.js"
                 data-error="errorCallback"
                 data-cancel="cancelCallback">
         </script>
@@ -55,8 +55,8 @@
                         name: 'Your merchant name',
                         address: {
                             line1: '200 Sample St',
-                            line2: '1234 Example Town'            
-                        }    
+                            line2: '1234 Example Town'
+                        }
                     }
                 }
             });
@@ -93,7 +93,7 @@
 
 - With Lightbox a popup window appears and the transaction is completed without redirecting the customer to another page
 - With Payment page the customer is redirected to the checkout page
-- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered. Below you can see an example on how to redirect the customer back to your site after a transaction. First you need to request a checkout session using the Create Checkout Session operation ([see documentation](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/operation/Session%3a%20Create%20Checkout%20Session.html?locale=en_US)). The request should include payment and interaction data, as well as completion instructions. Include the returned session.id in the Checkout.configure( ) request to the Mastercard Payment Gateway. 
+- Inside the body of the script tag that references  **checkout.js** you can define any callback functions you want to use. Callbacks are optional, but all defined callbacks _must_ have an implementation. They will be invoked when the relevant event is triggered. Below you can see an example on how to redirect the customer back to your site after a transaction. First you need to request a checkout session using the Create Checkout Session operation ([see documentation](https://ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/operation/Session%3a%20Create%20Checkout%20Session.html?locale=en_US)). The request should include payment and interaction data, as well as completion instructions. Include the returned session.id in the Checkout.configure( ) request to the Mastercard Payment Gateway.
 
 **Create Checkout Session call request:**
 ```
@@ -130,16 +130,16 @@ Checkout.configure({
                         name: 'Your merchant name',
                         address: {
                             line1: '200 Sample St',
-                            line2: '1234 Example Town'            
-                        }    
+                            line2: '1234 Example Town'
+                        }
                     }
                 },
 		session: {
 			id: 'SessionId'
-		}														
+		}
             });
 ```
-In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
+In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
 
 ### Tokenization via the hosted checkout
 You can tokenize a card by following these steps:
@@ -147,7 +147,7 @@ You can tokenize a card by following these steps:
 2. Add the obtained sessionId in the checkout.Configure() method
 3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
 
-Url: ``https://test.ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>``
+Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>``
 
 PUT request:
 ```
@@ -159,7 +159,7 @@ PUT request:
 ```
 For more information on tokenization [see here](https://eu-gateway.mastercard.com/api/documentation/apiDocumentation/rest-json/version/latest/operation/Tokenization%3a%20%20Create%20or%20Update%20Token.html?locale=en_US)
 
-[**Documentation for hosted checkout**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
+[**Documentation for hosted checkout**](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html)
 
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
@@ -168,7 +168,7 @@ After the setup you will need to complete some test transactions to make sure th
 
 The card used in the tests is a test card enrolled with 3DS authentication.
 
- [**For more test cards click here**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
+ [**For more test cards click here**](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
 
 **Card info:**
 
@@ -225,7 +225,7 @@ The payment should be declined
 For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting1](images/reporting.png)
- 
+
  # Hosted Session
 
 Choose the Hosted Session model if you want control over the layout and styling of your payment page, while reducing PCI compliance costs. The Hosted Session JavaScript client library enables you to collect sensitive payment details from the payer in payment form fields, sourced from and controlled by MasterCard Payment Gateway. The gateway collects the payment details in a payment session and temporarily stores them for later use. You can then include a payment session in place of payment details in the transaction request to process a payment.
@@ -235,7 +235,7 @@ Choose the Hosted Session model if you want control over the layout and styling 
 <html>
 <head>
 <!-- INCLUDE SESSION.JS JAVASCRIPT LIBRARY -->
-<script src="https://test.ibanke-commerce.nbg.gr/form/version/54/merchant/<Your merchant ID>/session.js"></script>
+<script src="https://ibanke-commerce.nbg.gr/form/version/54/merchant/<Your merchant ID>/session.js"></script>
 
 <!-- APPLY CLICK-JACKING STYLING AND HIDE CONTENTS OF THE PAGE -->
 <style id="antiClickjack">body{display:none !important;}</style>
@@ -453,11 +453,11 @@ function pay(paymentType) {
 The difference between hosted session and direct api calls is that by creating a hosted session the payment details are safely stored for the duration of the session and you can execute api calls by providing the session ID created, so you don&#39;t have to handle sensitive card information.
 
 
-[Documentation for Hosted Session integration](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedSession/integrationModelHostedSession.html)
+[Documentation for Hosted Session integration](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedSession/integrationModelHostedSession.html)
 
 
 
-[Documentation for the calls to the Payment Gateway](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
+[Documentation for the calls to the Payment Gateway](https://ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
 
@@ -465,7 +465,7 @@ After the setup you will need to complete some test transactions to make sure th
 
 The card used in the tests is a test card enrolled with 3DS authentication.
 
- [**For more test cards click here**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
+ [**For more test cards click here**](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
 
 **Card info:**
 
@@ -519,10 +519,10 @@ The payment should be declined
 For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting2](images/reporting.png)
- 
+
  # Direct API
 
-[Documentation for the calls to the Payment Gateway](https://test.ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
+[Documentation for the calls to the Payment Gateway](https://ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/api.html?locale=en_US)
 
 After the setup you will need to complete some test transactions to make sure that you are setup correctly and ready to go live
 
@@ -530,7 +530,7 @@ After the setup you will need to complete some test transactions to make sure th
 
 The card used in the tests is a test card enrolled with 3DS authentication.
 
-[**For more test cards click here**](https://test.ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
+[**For more test cards click here**](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/testAndGoLive.html?locale=en_US)
 
 **Card info:**
 
