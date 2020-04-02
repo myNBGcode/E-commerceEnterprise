@@ -519,7 +519,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+							"raw": "{\n\t\"lineOfBusiness\": \"DONOTENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\"\n            }\n        },\n        \"type\": \"CARD\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
@@ -567,7 +567,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
+							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
@@ -678,7 +678,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n\t\"lineOfBusiness\": \"ENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\",\n\t\t\t\t\"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    },\n}"
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n\t\"lineOfBusiness\": \"ENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\",\n\t\t\t\t\"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
@@ -1480,7 +1480,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n\t\"lineOfBusiness\": \"DONOTENFORCE\"\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
@@ -1648,7 +1648,184 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"54",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "One Step Payment - Pay - Customer Initiated CNP - 3DS",
+			"item": [
+				{
+					"name": "Tokenize Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/token",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"54",
+								"merchant",
+								"{{MID}}",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check 3DS Enrollment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData.3DSecureId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n        \"authenticationRedirect\": {\n            \"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n        }\n    },\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"54",
+								"merchant",
+								"{{MID}}",
+								"3DSecureId",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Click Payment - Pay",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
