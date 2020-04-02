@@ -500,7 +500,7 @@
 								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData.3DSecureId);",
+									"",
 									""
 								],
 								"type": "text/javascript"
@@ -519,7 +519,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"DONOTENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\"\n            }\n        },\n        \"type\": \"CARD\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
+							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\"\n            }\n        },\n        \"type\": \"CARD\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
@@ -549,7 +549,8 @@
 							"script": {
 								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
 								"exec": [
-									""
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"3DS\", jsonData.3DSecureId);"
 								],
 								"type": "text/javascript"
 							}
@@ -1648,7 +1649,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
@@ -1782,6 +1783,54 @@
 								"{{MID}}",
 								"3DSecureId",
 								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Process 3DS Enrollment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"54",
+								"merchant",
+								"{{MID}}",
+								"3DSecureId",
+								"{{3DS_ID}}"
 							]
 						}
 					},
