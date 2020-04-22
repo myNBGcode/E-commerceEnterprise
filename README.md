@@ -38,7 +38,7 @@
 
             Checkout.configure({
                 version: '54',
-		lineOfBusiness: 'ENFORCE'
+		lineOfBusiness: 'ENFORCE',
                 merchant: 'Your merchant ID',
                 order: {
                     amount: function() {
