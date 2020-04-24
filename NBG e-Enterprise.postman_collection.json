@@ -283,7 +283,7 @@
 								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData.3DSecureId);",
+									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
 									""
 								],
 								"type": "text/javascript"
@@ -550,7 +550,7 @@
 								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS\", jsonData.3DSecureId);"
+									"postman.setEnvironmentVariable(\"3DS\", jsonData[\"3DSecureId\"]);"
 								],
 								"type": "text/javascript"
 							}
@@ -1747,7 +1747,7 @@
 								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData.3DSecureId);",
+									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
 									""
 								],
 								"type": "text/javascript"
