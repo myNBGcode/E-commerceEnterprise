@@ -597,4 +597,3 @@ After completing the test scenarios you can fill this table with the reference n
 | Auth/Pre | 5123450000000008 |  NotAuthenticated | DECLINED | Correct Data | Not 3D-Secure Authenticated |   |
 | Auth/Pre | 5123450000000008 |   Attempted | ACCEPTED | Correct Data | 3D-Secure Attempted |   |
 | Auth/Pre | 5123450000000008 |   Unavailable | ACCEPTED | Correct Data | 3D-Secure Unavailable |   |
-| Auth/Pre | 5123450000000008 |  Authenticated | DECLINED | Wrong CVV (example 102) | 3D-Secure Authenticated |   |
