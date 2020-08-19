@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "40303ede-b267-4229-9d23-7db1f68bb784",
+		"_postman_id": "62e51744-054f-479f-a97e-e24cfdd24565",
 		"name": "NBG e-Enterprise",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "97276a1d-4bb6-4b58-9ea0-7dff7eb9ae3d",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -63,7 +63,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "a3cb3ad3-e0a2-469a-a709-ad49ddc11002",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -113,7 +113,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "24575ba4-8f06-4243-986f-c05e12f6ac3f",
 								"exec": [
 									""
 								],
@@ -123,7 +123,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "8e99a6ed-9d7b-4593-8b70-6fe361072168",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -181,7 +181,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "35b145b8-7298-471b-ab6b-4effc5cbd2ae",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -230,7 +230,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "6a324d87-dcc0-4207-a59a-9eeed1ff932c",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -280,7 +280,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "d8090515-fabd-4cda-96a6-d633d30dbfa4",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
@@ -330,7 +330,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "ed7e8b9b-2b86-4aa9-af52-05cd4db9d9ba",
 								"exec": [
 									""
 								],
@@ -378,7 +378,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "88ad2951-1e61-493a-9e1d-8d88c44e500d",
 								"exec": [
 									""
 								],
@@ -429,7 +429,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "b9078a95-ce31-4124-be60-9074a560130c",
 								"exec": [
 									""
 								],
@@ -439,7 +439,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "3b7e9cbe-eda0-4656-be6d-bfdf4c5779c5",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -497,7 +497,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "c9dd1ad1-5f0f-4900-a41f-65bca7093437",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"",
@@ -547,7 +547,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "bf19ecc1-fddd-4f01-b4e1-6fbe621f5eee",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"3DS\", jsonData[\"3DSecureId\"]);"
@@ -596,7 +596,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "fd37b0d6-7818-4351-961a-d28b868035e2",
 								"exec": [
 									""
 								],
@@ -647,7 +647,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "23b1fa3e-83c0-4145-a74c-37a89c9b3869",
 								"exec": [
 									""
 								],
@@ -657,7 +657,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "d18471da-6f99-4e2c-a8ca-f4251c98eb17",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -715,7 +715,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "0ec133e6-c864-4d1a-94b7-8e1486e4433e",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -764,7 +764,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "007d125e-1694-4483-9f2f-4fe4f6669120",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -786,7 +786,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
+							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"25\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5278900020308586\",\n                \"securityCode\": \"123\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
@@ -809,12 +809,12 @@
 					"response": []
 				},
 				{
-					"name": "Pay",
+					"name": "Auth",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "9672f9c1-8bd9-4dd8-969a-1f37649a530d",
 								"exec": [
 									""
 								],
@@ -824,7 +824,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "80e006a7-2c76-4087-9a98-4de2493aae59",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -840,13 +840,13 @@
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"paymentPlan\": {\n    \t\"numberOfDeferrals\": 0,\n    \t\"numberOfPayments\": 6,\n    \t\"planId\": \"NBG\"\n    }\n}"
+							"raw": "{\n    \"apiOperation\": \"AUTHORIZE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"certainty\": \"ESTIMATED\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"paymentPlan\": {\n    \t\"numberOfDeferrals\": 0,\n    \t\"numberOfPayments\": 6,\n    \t\"planId\": \"NBG\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
@@ -869,6 +869,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Capture",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"CAPTURE\",\n    \"transaction\": {\n    \t\"amount\": 500,\n        \"currency\": \"EUR\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"54",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -882,7 +920,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "e4e975df-d32e-4b1e-ab7d-636ff8c1b69a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -931,7 +969,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "fc289f96-5d40-49f0-baa7-2b34b2e4137b",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -981,7 +1019,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "42d2d9cc-0d16-4f3c-95ed-6281b87649ed",
 								"exec": [
 									""
 								],
@@ -991,7 +1029,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "04a70318-2015-4653-a5fe-9cba9eea74df",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
@@ -1040,7 +1078,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "387cf696-2c5a-42d6-b929-5cd3780c4d00",
 								"exec": [
 									""
 								],
@@ -1050,7 +1088,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "a5f4dff3-434b-4fb3-900f-c1bf99de8f5c",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1103,7 +1141,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "46f6a460-27d5-438c-812f-a840068b2be5",
 								"exec": [
 									""
 								],
@@ -1113,7 +1151,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "d8cd35e4-d41f-422d-8d1d-064b04b5003f",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1171,7 +1209,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "5c4943c6-1c1e-478c-ba3e-4f788007146a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -1220,7 +1258,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "9e429adf-55c9-4141-8915-b7109a6103fd",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -1270,7 +1308,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "af4685f6-1723-49e6-98e9-6f755897c138",
 								"exec": [
 									""
 								],
@@ -1280,7 +1318,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "7b7591b8-3055-49df-bf57-362d227c9edc",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
@@ -1329,7 +1367,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "f5ee36c9-f3f3-4304-bf88-a0ab731e9571",
 								"exec": [
 									""
 								],
@@ -1339,7 +1377,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "66c31632-d265-4c6a-aa58-0b221673d356",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1391,7 +1429,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "57ad42df-58a4-4dc8-a582-95c5c81e40af",
 								"exec": [
 									""
 								],
@@ -1401,7 +1439,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "3bc7c525-c5a3-446f-9a2a-f7bff4c382bf",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1459,7 +1497,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "0c97d4e0-e05e-4786-974e-9afe921679a1",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -1508,7 +1546,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "f372da58-8a85-4cac-88b5-408cc393ea85",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -1558,7 +1596,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "44115815-3bc0-4d17-a149-cf396aadb742",
 								"exec": [
 									""
 								],
@@ -1568,7 +1606,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "ef614b7d-8f09-493a-aea0-225d08afec8c",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
@@ -1617,7 +1655,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "c5fbf100-ad22-451c-a5ee-5d4778ce53f3",
 								"exec": [
 									""
 								],
@@ -1627,7 +1665,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "ff32b679-a79a-4395-9d4f-89cf38d9ccf5",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1685,7 +1723,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "ad6a591f-791f-4db8-b935-9449a211b578",
 								"exec": [
 									""
 								],
@@ -1695,7 +1733,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "6b53f383-d2d7-4ef9-a038-7884c028ead6",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
@@ -1744,7 +1782,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "7f123c78-90be-4ccc-ab0e-f936d0992e3a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
@@ -1794,7 +1832,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a7340d3-6605-441a-94f3-6b41a2887eb1",
+								"id": "d3169df1-93f9-40ef-b42a-ac70d7fbaf17",
 								"exec": [
 									""
 								],
@@ -1842,7 +1880,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "5b264dd9-157e-499d-a30b-f58d018a9347",
 								"exec": [
 									""
 								],
@@ -1852,7 +1890,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "4ea9cceb-e605-4fd5-8f52-e9e56d5188f5",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -1910,7 +1948,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "1e882279-47f4-4033-a642-e4dd056fcc55",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -1959,7 +1997,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2c08f6-a637-48ff-814b-4ed3c03c98e6",
+								"id": "276283cb-f3af-46f1-875e-c405aafb2f66",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -2009,7 +2047,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+								"id": "fb5260ca-4b03-4ccd-af5f-2e51eedfd56d",
 								"exec": [
 									""
 								],
@@ -2019,7 +2057,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+								"id": "0ae6a8e5-7ac4-44e7-828e-ec2378bbbbe8",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
@@ -2230,7 +2268,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ba263e30-2c88-45aa-b7ba-0361de89a34a",
+						"id": "44484852-08bd-40ac-88fb-96ce7540453f",
 						"exec": [
 							""
 						],
@@ -2240,7 +2278,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8f5ab552-c625-4a43-bd89-7ebd8a024ac3",
+						"id": "2c52799a-1cb7-401f-9915-294535a1ac3a",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"orderId\", jsonData.order.id);"
@@ -2305,7 +2343,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "66a43bf4-33b2-44b6-9451-d26346896e57",
+				"id": "8da0a18e-4084-4acb-abcb-97a6c6587afb",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2315,7 +2353,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "7b98c74d-4935-4495-b197-5d6677152e57",
+				"id": "8268407b-8cee-49df-80a5-0f39819382f9",
 				"type": "text/javascript",
 				"exec": [
 					"var jsonData = JSON.parse(responseBody);",
