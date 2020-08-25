@@ -302,6 +302,7 @@ if (self === top) {
 }
 
 PaymentSession.configure({
+    session: "{Previously created session ID}",
     fields: {
         // Attach hosted fields to your payment page
             card: {
