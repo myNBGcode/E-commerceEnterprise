@@ -466,7 +466,7 @@ Post request
 	"lineOfBusiness": "ENFORCE"
 }
 ```
-
+[Documentation for Create Session call]https://ibanke-commerce.nbg.gr/api/documentation/apiDocumentation/rest-json/version/latest/operation/Session%3a%20Create%20Session.html?locale=en_US
 
 [Documentation for Hosted Session integration](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedSession/integrationModelHostedSession.html)
 
