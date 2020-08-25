@@ -302,7 +302,7 @@ if (self === top) {
 }
 
 PaymentSession.configure({
-    session: "{Previously created session ID}",
+    session: "{Previously created session ID}", //see note below
     fields: {
         // Attach hosted fields to your payment page
             card: {
@@ -455,6 +455,16 @@ function pay(paymentType) {
 ```
 
 The difference between hosted session and direct api calls is that by creating a hosted session the payment details are safely stored for the duration of the session and you can execute api calls by providing the session ID created, so you don&#39;t have to handle sensitive card information.
+
+**Please note that depending on the type of transasaction about to be processed you need to provide the lineOfBusiness field by creating a session prior to the hosted session form load and adding the sessionId to the form.**
+In the lineOfBusiness field you specify how the transaction is going to be processed. The allowable values are "ENFORCE" and "DONOTENFORCE". For transactions with a card present that require the CVV code of the card the value must be "ENFORCE". For transactions that don't require the CVV code such as payment with a card token the value must be "DONOTENFORCE". This field should be passed in the Create Session call. Example request and documentation:
+
+Post request
+```
+{
+	"lineOfBusiness": "ENFORCE"
+}
+```
 
 
 [Documentation for Hosted Session integration](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedSession/integrationModelHostedSession.html)
