@@ -707,7 +707,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "One Step Payment - Pay - Installments",
+			"name": "Two Step Payment - Preauthorize/Capture - Installments",
 			"item": [
 				{
 					"name": "Create Session",
