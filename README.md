@@ -216,15 +216,6 @@ In the following 3DS emulator choose &quot;Authentication Not Available&quot; an
 
 The payment should be successful
 
-### **Scenario 5:** Failed _transaction using a wrong CVC number with 3DS authentication successful_
-
-Enter all required details as before, but with an invalid CVC number, 102 instead of 100 in this test case.
-
-In the following 3DS emulator choose &quot;Authentication Successful&quot; and press &quot;Submit&quot;
-
-
-The payment should be declined
-
 For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting1](images/reporting.png)
@@ -522,15 +513,6 @@ After rendering the ACS emulator from the response choose &quot;Authentication N
 
 The payment should be successful
 
-### **Scenario 5:** Failed _transaction using a wrong CVC number with 3DS authentication successful_
-
-Create a hosted session with the above card details, except in this case use &quot;102&quot; as a CVC number which is an invalid number for this test card. Then provide the session ID to execute a pay call.
-
-After rendering the ACS emulator from the response choose &quot;Authentication Successful&quot; and press &quot;Submit&quot;
-
-
-The payment should be declined
-
 For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
 ![reporting2](images/reporting.png)
@@ -587,14 +569,6 @@ Execute a pay call providing the above card details as shown in the documentatio
 After rendering the ACS emulator from the response choose &quot;Authentication Not Available&quot; and press &quot;Submit&quot;
 
 The payment should be successful
-
-### **Scenario 5:** Failed _transaction using a wrong CVC number with 3DS authentication successful_
-
-Execute a pay call providing the above card details as shown in the documentation, except in this case use &quot;102&quot; as a CVC number which is an invalid number for this test card.
-
-After rendering the ACS emulator from the response choose &quot;Authentication Successful&quot; and press &quot;Submit&quot;
-
-The payment should be declined
 
 For each of the above transactions you can confirm the result from the merchant administrator page  (see screenshot bellow) using the reference number you provided.
 
