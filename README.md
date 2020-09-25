@@ -2,10 +2,6 @@
 # Welcome to the Enterprise E-commerce solution
 ##  Empower and update your website with payment capabilities offered and supported entirely by NBG.
 
-## EMV 3DS migration
-### How to migrate depending on your implementation:
-
-
 ### How to integrate & test:
 
 [Hosted checkout](#Hosted-checkout)
