@@ -4,7 +4,7 @@
 ##  Empower and update your website with payment capabilities offered and supported entirely by NBG.
 </br>
 
-## UPDATE: [Transition to the new EMV 3DS authentication](#Transition-to-the-new-EMV-3DS-authentication)
+### UPDATE: [Transition to the new EMV 3DS authentication](#Transition-to-the-new-EMV-3DS-authentication)
 </br>
 
 ### How to integrate & test:
