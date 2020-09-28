@@ -1,6 +1,11 @@
 
+
 # Welcome to the Enterprise E-commerce solution
 ##  Empower and update your website with payment capabilities offered and supported entirely by NBG.
+</br>
+
+## UPDATE: [Transition to the new EMV 3DS authentication](#Transition-to-the-new-EMV-3DS-authentication)
+</br>
 
 ### How to integrate & test:
 
@@ -574,6 +579,14 @@ For each of the above transactions you can confirm the result from the merchant 
 
 ![reporting3](images/reporting.png)
 
+# Transition to the new EMV 3DS authentication
+### How to migrate depending on your implementation:
+
+**Hosted checkout:** </br>
+With EMV 3DS the creation of a checkout session before the transcation is mandatory. Please refer to the [Hosted checkout](Hosted-checkout) section for information on how to create a session and provide the sessionId to the hosted checkout script. If you are already using a checkout session in your implementation no change is needed for the migration.</br>
+
+**Hosted Session & Direct API:** </br>
+Please refer to the official documentation for the new API flow for [EMV 3DS](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/supportedFeatures/pickAdditionalFunctionality/authentication/3DS/3DSecureAuthentication.html?locale=en_US)</br>
 # Test results
 
 After completing the test scenarios you can fill this table with the reference numbers of the transactions so that we can crosscheck the results
