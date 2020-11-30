@@ -154,7 +154,7 @@ You can tokenize a card by following these steps:
 2. Add the obtained sessionId in the checkout.Configure() method
 3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
 
-Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/54/merchant/<your merchantId>/token/<token number>``
+Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/57/merchant/<your merchantId>/token/<token number>``
 
 PUT request:
 ```
