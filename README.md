@@ -76,7 +76,7 @@
 </html>
 ```
 **Configure Object Properties**
- - version: '54' is the current API version. Do not change unless notified.
+ - version: '57' is the current API version. Do not change unless notified.
  - lineOfBusiness: In this field you specify how the transaction is going to be processed. The allowable values are "ENFORCE" and "DONOTENFORCE". For transactions that require the CVV code of the card the value must be "ENFORCE". For transactions that don't require the CVV code such as payment with a card token the value must be "DONOTENFORCE". **Note** that if you use a session Id it's recommended that you pass the lineOfBusiness field only in the create checkout session request (see below).
 - merchant: The MID row from the [credentials file](https://files.nbg.gr/ecommerce/docs/i-Bank%20e-Enterprise%20API%20Credentials.docx). In TEST mode, all MIDs are prefixed with TEST, eg TEST799700711
 - order
