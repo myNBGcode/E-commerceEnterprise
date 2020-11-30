@@ -27,7 +27,7 @@
 ```
 <html>
     <head>
-        <script src="https://ibanke-commerce.nbg.gr/checkout/version/54/checkout.js"
+        <script src="https://ibanke-commerce.nbg.gr/checkout/version/57/checkout.js"
                 data-error="errorCallback"
                 data-cancel="cancelCallback">
         </script>
@@ -41,7 +41,7 @@
             }
 
             Checkout.configure({
-                version: '54',
+                version: '57',
 		lineOfBusiness: 'ENFORCE',
                 merchant: 'Your merchant ID',
                 order: {
@@ -119,7 +119,7 @@
 **Addition of the session.Id obtained:**
 ```
 Checkout.configure({
-                version: '54',
+                version: '57',
                 merchant: 'Your merchant ID',
                 order: {
                     amount: function() {
@@ -233,7 +233,7 @@ Choose the Hosted Session model if you want control over the layout and styling 
 <html>
 <head>
 <!-- INCLUDE SESSION.JS JAVASCRIPT LIBRARY -->
-<script src="https://ibanke-commerce.nbg.gr/form/version/54/merchant/<Your merchant ID>/session.js"></script>
+<script src="https://ibanke-commerce.nbg.gr/form/version/57/merchant/<Your merchant ID>/session.js"></script>
 
 <!-- APPLY CLICK-JACKING STYLING AND HIDE CONTENTS OF THE PAGE -->
 <style id="antiClickjack">body{display:none !important;}</style>
