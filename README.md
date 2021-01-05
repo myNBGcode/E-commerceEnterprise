@@ -148,13 +148,47 @@ Checkout.configure({
 ```
 In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
 
+### Installments via the hosted checkout
+In order to support payments with installments you need to follow the two step payment method:
+1. Create a checkout session and provide the order.certainty field with the value 'ESTIMATED'
+2. The operation of the checkout must be 'AUTHORIZE' and not 'PURCHASE'
+**Create Checkout Session call request for installments support:**
+```
+{
+    "apiOperation": "CREATE_CHECKOUT_SESSION",
+    "lineOfBusiness": "ENFORCE",
+    "order": {
+        "currency": "EUR",
+        "id": "Unique order ID",
+	"certainty": "ESTIMATED"
+    },
+    "interaction": {
+        "operation": "AUTHORIZE",
+        "returnUrl": "your website"
+    }
+}
+3. Add the obtained sessionId in the checkout.Configure() method
+3. After the transaction is completed you need to execute a direct API call to capture the authorized amount. An example for the capture call is shown below:
+Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/57/merchant/<your merchantId>/order/<OrderId of the order to be captured>/transaction/<a new transactionId>``
+
+PUT request:
+```
+{
+    "apiOperation": "CAPTURE",
+    "transaction": {
+    	"amount": 50,
+        "currency": "EUR"
+    }
+}
+```
+
 ### Tokenization via the hosted checkout
 You can tokenize a card by following these steps:
 1. Create a checkout session as above
 2. Add the obtained sessionId in the checkout.Configure() method
 3. After the transaction is completed you need to execute a direct API call to tokenize the card, using the sessionId. An example for the call is shown below:
 
-Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/57/merchant/<your merchantId>/token/<token number>``
+Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/57/merchant/<your merchantId>/token``
 
 PUT request:
 ```
