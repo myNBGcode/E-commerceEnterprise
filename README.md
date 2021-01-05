@@ -111,7 +111,7 @@
         "id": "Unique order ID"
     },
     "interaction": {
-        "operation": "PURCHASE",
+        "operation": "PURCHASE", // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
         "returnUrl": "your website"
     }
 }
@@ -128,17 +128,13 @@ Checkout.configure({
                     },
                     currency: 'EUR',
                     description: 'Ordered goods',
-                   id: 'Unique order ID',
-				   reference: 'Unique reference number'
+                    id: 'Unique order ID',
+		    reference: 'Unique reference number'
                 },
                 interaction: {
-                    operation: 'PURCHASE', // set this field to 'PURCHASE' for Hosted Checkout to perform a Pay Operation.
+                    operation: 'PURCHASE', 
                     merchant: {
-                        name: 'Your merchant name',
-                        address: {
-                            line1: '200 Sample St',
-                            line2: '1234 Example Town'
-                        }
+                        name: 'Your merchant name'
                     }
                 },
 		session: {
