@@ -175,7 +175,7 @@ PUT request:
 {
     "apiOperation": "CAPTURE",
     "transaction": {
-    	"amount": 50,
+    	"amount": <the amount that was previously authorized>,
         "currency": "EUR"
     }
 }
