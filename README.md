@@ -149,7 +149,7 @@ Checkout.configure({
 In the example above we pass the redirectUrl in the create session request. You also have the option to pass it in a Complete Callback call. For more information on Callbacks, how to handle responses and redirect to your site [see here](https://ibanke-commerce.nbg.gr/api/documentation/integrationGuidelines/hostedCheckout/integrationModelHostedCheckout.html#x_HCOCallbacks).
 
 ### Installments via the hosted checkout
-In order to support payments with installments you need to follow the two step payment method:
+In order to support payments with installments you need to follow the two step payment method (AUTHORIZE-CAPTURE):
 1. Create a checkout session and provide the order.certainty field with the value 'ESTIMATED'
 2. The operation of the checkout must be 'AUTHORIZE' and not 'PURCHASE'
 **Create Checkout Session call request for installments support:**
