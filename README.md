@@ -170,6 +170,7 @@ In order to support payments with installments you need to follow the two step p
 ```
 3. Add the obtained sessionId in the checkout.Configure() method
 4. After the transaction is completed you need to execute a direct API call to capture the authorized amount. An example for the capture call is shown below:
+
 Url: ``https://ibanke-commerce.nbg.gr/api/rest/version/57/merchant/<your merchantId>/order/<OrderId of the order to be captured>/transaction/<a new transactionId>``
 
 PUT request:
