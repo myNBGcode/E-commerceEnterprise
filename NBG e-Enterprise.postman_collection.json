@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "45febeac-98c2-4a9e-9ac0-7bee76db92e8",
+		"_postman_id": "326526b9-17ed-43ab-9004-6112f3deea1b",
 		"name": "NBG e-Enterprise",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "One Step Payment - Pay",
+			"name": "One Step Payment - Pay - 3DS 2.0",
 			"item": [
 				{
 					"name": "Create Session",
@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e26b022f-0a28-4af6-a197-e0a0292a869a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -36,2222 +35,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\"\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "def4b58d-e794-48e4-8952-7c4a03e5ab31",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "62699866-7197-4c31-a2aa-69aa8e085b49",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "b9c05d80-8af5-4e7c-a6f9-43d3c6458a27",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - 3DS",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d8148904-4612-49f1-9091-3d18fd60bcb9",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\"\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "02690361-248d-4ca7-985e-26c98b13ee6e",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Check 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "7fb45b58-3e6e-4ef3-8a8a-bbea46b6a67c",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Process 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "0c5b8274-574b-492f-87d5-476377e5a306",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{3DS_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve 3DS Results",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "cd6fad8b-f59b-4bfa-8c76-4c02a15f3b69",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{3DS_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "44087a46-7df6-4fb4-850d-fd18571581b2",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "ecb14b0a-afd1-43c1-ab38-d0dfd2433f1b",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - 3DS - Direct API",
-			"item": [
-				{
-					"name": "Check 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "7011d5c5-1232-4686-a548-8eaabfdcd6d3",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\"\n            }\n        },\n        \"type\": \"CARD\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n    \t\"authenticationRedirect\": {\n    \t\t\"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n    \t}\n    },\n    \"order\": {\n    \t\"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Process 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "958a6735-5d9d-4cb5-b3f8-8a97c8a1a048",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS\", jsonData[\"3DSecureId\"]);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{3DS_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve 3DS Results",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5a8e3578-3768-48eb-af8c-837d55d61044",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{3DS_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00dc4b36-bc63-4bea-91c6-f1c4f755d4c6",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "212d0ba2-8a43-4c41-8f92-be39f66edcbe",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n\t\"lineOfBusiness\": \"ENFORCE\",\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\",\n\t\t\t\t\"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Two Step Payment - Preauthorize/Capture - Installments",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b2f32d75-231a-4aed-a866-0cbae11fe96a",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\"\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "cf02eb29-14d2-426a-8882-6fe47b924fe9",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"25\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5278900020308586\",\n                \"securityCode\": \"123\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Auth",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "94464701-276f-4737-992c-1f3fde798579",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "a2ca1da6-1fc4-4655-b114-cf7cef1c7f75",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHORIZE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"certainty\": \"ESTIMATED\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"paymentPlan\": {\n    \t\"numberOfDeferrals\": 0,\n    \t\"numberOfPayments\": 6,\n    \t\"planId\": \"NBG\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Capture",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"CAPTURE\",\n    \"transaction\": {\n    \t\"amount\": 500,\n        \"currency\": \"EUR\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{ORDER_ID}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - Recurring",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b45c6b8c-3947-42cd-bc91-cb92f95be5e9",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"DONOTENFORCE\"\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "0517ee67-4e8c-4376-a53d-12be08ee9621",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Tokenize Card",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "1f6f4348-1a2b-489f-a38a-92d15572f127",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "1505029f-8d44-4f86-8b36-2384a9bbbac7",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/token",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay - Initial",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "7b4e806c-d71c-4384-84fd-b00331f596f8",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "52fde050-3a6f-4541-bce8-f22b8b1b7fd8",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    },\n    \"agreement\": {\n    \t\"id\": \"{{$guid}}\",\n    \t\"type\": \"RECURRING\"\n    },\n    \"transaction\": {\n    \t\"source\": \"INTERNET\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay - Subsequent",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "fadedbdc-285c-4575-8c13-56c6ed6ac6d8",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "fb9bdcb0-973f-425a-9c3d-bee2216d7ac3",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - Unscheduled",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b039fe91-5f5d-4104-bbd2-e3a676e5de83",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3f5d0dc-e296-467f-b91b-ef51f3fe4427",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Tokenize Card",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "0d919601-1d17-4d7f-8dde-0109b78d9ff1",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "c3fd4cf1-65bb-4e3b-b1ea-6fb199cef01e",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/token",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay - Initial",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "1c98c6d5-7201-4496-9018-efbc4365ea4b",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "7c7f2eef-0404-4a71-8764-ef802f2bbc95",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    },\n    \"agreement\": {\n    \t\"id\": \"{{$guid}}\",\n    \t\"type\": \"UNSCHEDULED\"\n    },\n    \"transaction\": {\n    \t\"source\": \"INTERNET\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pay - Subsequent",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "0a71b330-dd1c-4e5f-9b7e-3493657cbbca",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "6127dabb-0b99-428d-90cb-04a733a9deb9",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - Customer Initiated CNP",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "725ec656-dc1b-47b5-9b1f-a44be5b7dc5d",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"DONOTENFORCE\"\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3d241318-8b38-40df-9bc1-74c6965492f7",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Tokenize Card",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "8e7b2f3b-6bc3-459e-8faa-5a7e482b0bc7",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "b783a9c2-173c-4a83-8e87-b406f7306b0c",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/token",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "One Click Payment - Pay",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "c26eeb3f-928f-49ee-9398-5cedfa88f271",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "f2f825c5-5947-4456-8990-5e0093b7b51a",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - Customer Initiated CNP - 3DS",
-			"item": [
-				{
-					"name": "Tokenize Card",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "dce2e7ea-ad47-4bd3-9a1e-8c484b4f536f",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "12cba3d6-b972-4286-8efa-24e4c919cd68",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/token",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Check 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "a4356444-f036-4575-b152-1b2e36c7de86",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"3DS_ID\", jsonData[\"3DSecureId\"]);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\"\n    },\n    \"apiOperation\": \"CHECK_3DS_ENROLLMENT\",\n    \"3DSecure\": {\n        \"authenticationRedirect\": {\n            \"responseUrl\": \"{{3DS_RESPONSE_URL}}\"\n        }\n    },\n    \"order\": {\n        \"amount\": 100,\n        \"currency\": \"EUR\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Process 3DS Enrollment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c092bece-f589-4122-8ff0-2ba084ed9673",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PROCESS_ACS_RESULT\",\n    \"3DSecure\": {\n    \t\"paRes\": \"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\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/3DSecureId/{{3DS_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"3DSecureId",
-								"{{3DS_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "One Click Payment - Pay",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "31dfdb0b-4be0-4d97-a609-8c606a92eb85",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "1f224c1a-cc65-4388-8ae7-37ad55b6d4f8",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"3DSecureId\": \"{{3DS_ID}}\",\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Two Step Payment - Preauthorize/Capture",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d939c769-2c9c-48e7-b0d2-cac874de07f3",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\"\n}\n\t"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "984ee289-bee0-4be1-9e43-b7ab6e16ddcd",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session/{{SESSION_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session",
-								"{{SESSION_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Pre-auth",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "732cc035-4dd1-42f6-b5a0-ba00bb6a506e",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "a26851a8-7882-4854-a665-42549459b777",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHORIZE\",\n    \"order\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{$guid}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Capture",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"CAPTURE\",\n    \"transaction\": {\n    \t\"amount\": 500,\n        \"currency\": \"EUR\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{ORDER_ID}}",
-								"transaction",
-								"{{$guid}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Hosted Checkout Session",
-			"item": [
-				{
-					"name": "CREATE CHECKOUT SESSION",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "6aa69ebd-1416-4170-bc44-295bb1f27962",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/session",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"session"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "RETRIEVE ORDER",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}",
-							"protocol": "https",
-							"host": [
-								"{{PROD_URL}}"
-							],
-							"path": [
-								"api",
-								"rest",
-								"version",
-								"54",
-								"merchant",
-								"{{MID}}",
-								"order",
-								"{{ORDER_ID}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "One Step Payment - Pay - EMV 3DS",
-			"item": [
-				{
-					"name": "Create Session",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3b0f6656-1f92-4cec-888c-77b9825ff89b",
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"lineOfBusiness\": \"ENFORCE\"\n}"
+							"raw": "{\r\n    \"lineOfBusiness\": \"ENFORCE\"\r\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
@@ -2278,7 +62,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ab5bff3f-4231-46ef-af6c-fc474e03e85a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
@@ -2300,7 +83,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"vbab\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
+							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"05\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"test\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
@@ -2328,7 +111,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d8d46ef5-ccc1-48dd-9353-27ebdfece73a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);\r",
@@ -2350,10 +132,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    },\n    \"correlationId\": \"41fd8edd-6d6f-44ec-bbcd-2b051a7c8632\"\n}",
-							"options": {
-								"raw": {}
-							}
+							"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
@@ -2383,7 +162,490 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "60064bb1-fcb5-4e27-be8c-d187cf918b1a",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Transaction",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"authentication\": {\n    \t\"transactionId\": \"{{TRXN_ID}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tokenize card",
+			"item": [
+				{
+					"name": "Create Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineOfBusiness\": \"DONOTENFORCE\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"5\",\n                    \"year\": \"21\"\n                },\n                \"nameOnCard\": \"test\",\n                \"number\": \"5123450000000008\",\n                \"securityCode\": \"100\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session",
+								"{{SESSION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tokenize Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/token",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "One Step Payment - Pay - Recurring (NEW) - 3DS 2.0",
+			"item": [
+				{
+					"name": "Create Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineOfBusiness\": \"DONOTENFORCE\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session with token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    },\n    \"order\": {\n        \"id\": \"{{$guid}}\"\n    },\n    \"agreement\": {\n    \t\"id\": \"{{$guid}}\",\n    \t\"type\": \"RECURRING\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session",
+								"{{SESSION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);\r",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate Payer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
 								"exec": [
 									""
 								],
@@ -2403,10 +665,640 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 20\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": 273\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}",
-							"options": {
-								"raw": {}
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay - Initial",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
+									"postman.setEnvironmentVariable(\"TRC_ID\", jsonData.transaction.acquirer.traceId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"agreement\": {\n    \t\"id\": \"{{AGREEMENT_ID}}\",\n    \t\"type\": \"RECURRING\"\n    },\n    \"authentication\": {\n    \t\"transactionId\": \"{{TRXN_ID}}\"\n    },\n    \"transaction\": {\n    \t\"source\": \"INTERNET\"\n    },\n     \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay - Subsequent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "One Step Payment - Pay - Recurring (EXISTING) - 3DS 2.0",
+			"item": [
+				{
+					"name": "Get token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/token/{{TOKEN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"token",
+								"{{TOKEN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay - Initial - Mastercard",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{$guid}}\",\n        \"type\": \"UNSCHEDULED\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay - Initial - Visa",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
+									"postman.setEnvironmentVariable(\"TRC_ID\", jsonData.transaction.acquirer.traceId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{$guid}}\",\n        \"type\": \"UNSCHEDULED\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\",\n        \"acquirer\": {\n            \"traceId\": \"887001863998888\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pay - Subsequent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "One Step Payment - Pay - Card On File - Customer initiated (one click payment) - 3DS 2.0",
+			"item": [
+				{
+					"name": "Create Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineOfBusiness\": \"DONOTENFORCE\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session with token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session",
+								"{{SESSION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);\r",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate Payer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -2463,7 +1355,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a590dbea-9333-4328-a083-244cbc69b8ba",
 								"exec": [
 									""
 								],
@@ -2473,10 +1364,11 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fcf8703b-5aea-48b4-ba65-a611e9245f9a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									"postman.setEnvironmentVariable(\"AGREEMENT_ID\", jsonData.agreement.id);",
+									"postman.setEnvironmentVariable(\"TRC_ID\", jsonData.transaction.acquirer.traceId);",
 									""
 								],
 								"type": "text/javascript"
@@ -2495,7 +1387,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 20,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"authentication\":{\n        \"transactionId\":\"{{TRXN_ID}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+							"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 10,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"authentication\": {\n    \t\"transactionId\": \"{{TRXN_ID}}\"\n    },\n    \"transaction\": {\n    \t\"source\": \"INTERNET\"\n    },\n     \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
@@ -2520,7 +1412,1092 @@
 					"response": []
 				}
 			],
-			"protocolProfileBehavior": {}
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Two Step Payment - 3DS 2.0 - Installments",
+			"item": [
+				{
+					"name": "Create Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineOfBusiness\": \"ENFORCE\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sourceOfFunds\": {\n        \"provided\": {\n            \"card\": {\n                \"expiry\": {\n                    \"month\": \"05\",\n                    \"year\": \"25\"\n                },\n                \"nameOnCard\": \"test\",\n                \"number\": \"5278900020308586\",\n                \"securityCode\": \"123\"\n            }\n        },\n        \"type\": \"CARD\"\n    }\n}\n"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"session",
+								"{{SESSION_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Initiate Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);\r",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{$guid}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate Payer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 50\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Transaction",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{TRXN_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorize",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"AUTHORIZE\",\n    \"order\": {\n        \"amount\": 50,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\",\n        \"certainty\": \"ESTIMATED\"\n    },\n    \"authentication\": {\n    \t\"transactionId\": \"{{TRXN_ID}}\"\n    },\n    \"paymentPlan\": {\n    \t\"numberOfDeferrals\": 0,\n    \t\"numberOfPayments\": 6,\n    \t\"planId\": \"NBG\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Capture",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiOperation\": \"CAPTURE\",\n    \"transaction\": {\n    \t\"amount\": 50,\n        \"currency\": \"EUR\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+							"protocol": "https",
+							"host": [
+								"{{PROD_URL}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"version",
+								"57",
+								"merchant",
+								"{{MID}}",
+								"order",
+								"{{ORDER_ID}}",
+								"transaction",
+								"{{$guid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hosted Checkout",
+			"item": [
+				{
+					"name": "One Click Payments - Customer Initiated",
+					"item": [
+						{
+							"name": "First Payment",
+							"item": [
+								{
+									"name": "Create Checkout Session",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json; charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Test order\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"session"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Tokenize Card (After successful payment through checkout)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/token",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Payment with token",
+							"item": [
+								{
+									"name": "Create Session",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"lineOfBusiness\": \"DONOTENFORCE\"\r\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"session"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Session with token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"STORED\"\n    \t\t}\n    \t}\n    }\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"session",
+												"{{SESSION_ID}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Initiate Authentication",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);\r",
+													"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);\r",
+													"postman.setEnvironmentVariable(\"TRXN_ID\", jsonData.transaction.id);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"apiOperation\": \"INITIATE_AUTHENTICATION\",\n    \"order\": {\n        \"currency\": \"EUR\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    },\n    \"authentication\": {\n        \"channel\": \"PAYER_BROWSER\",\n        \"purpose\": \"PAYMENT_TRANSACTION\",\n        \"acceptVersions\": \"3DS1,3DS2\"\n    }\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"order",
+												"{{$guid}}",
+												"transaction",
+												"{{$guid}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Authenticate Payer",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 20\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": 273\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"order",
+												"{{ORDER_ID}}",
+												"transaction",
+												"{{TRXN_ID}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Pay",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json; charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"order\": {\n        \"amount\": 20,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"authentication\": {\n    \t\"transactionId\": \"{{TRXN_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"INTERNET\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"order",
+												"{{ORDER_ID}}",
+												"transaction",
+												"{{$guid}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Recurring Payments",
+					"item": [
+						{
+							"name": "Initial Payment",
+							"item": [
+								{
+									"name": "Create Checkout Session",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json; charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Initia payment\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    },\r\n    \"agreement\": {\r\n        \"type\": \"RECURRING\",\r\n        \"id\": \"{{$guid}}\"\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"session"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Tokenize Card (After successful payment through checkout)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setEnvironmentVariable(\"TOKEN_ID\", jsonData.token);",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"sourceOfFunds\": {\n    \t\"type\": \"CARD\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n}"
+										},
+										"url": {
+											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/token",
+											"protocol": "https",
+											"host": [
+												"{{PROD_URL}}"
+											],
+											"path": [
+												"api",
+												"rest",
+												"version",
+												"57",
+												"merchant",
+												"{{MID}}",
+												"token"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Pay - Subsequent Payments",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"ORDER_ID\", jsonData.order.id);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 1,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
+									"protocol": "https",
+									"host": [
+										"{{PROD_URL}}"
+									],
+									"path": [
+										"api",
+										"rest",
+										"version",
+										"57",
+										"merchant",
+										"{{MID}}",
+										"order",
+										"{{$guid}}",
+										"transaction",
+										"{{$guid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Two Step Payment - Installments",
+					"item": [
+						{
+							"name": "Create Checkout Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\",\r\n        \"certainty\": \"ESTIMATED\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"AUTHORIZE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+									"protocol": "https",
+									"host": [
+										"{{PROD_URL}}"
+									],
+									"path": [
+										"api",
+										"rest",
+										"version",
+										"57",
+										"merchant",
+										"{{MID}}",
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Capture",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"apiOperation\": \"CAPTURE\",\n    \"transaction\": {\n    \t\"amount\": 50,\n        \"currency\": \"EUR\"\n    }\n}"
+								},
+								"url": {
+									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+									"protocol": "https",
+									"host": [
+										"{{PROD_URL}}"
+									],
+									"path": [
+										"api",
+										"rest",
+										"version",
+										"57",
+										"merchant",
+										"{{MID}}",
+										"order",
+										"{{ORDER_ID}}",
+										"transaction",
+										"{{$guid}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "One Step Payment",
+					"item": [
+						{
+							"name": "Create Checkout Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
+									"protocol": "https",
+									"host": [
+										"{{PROD_URL}}"
+									],
+									"path": [
+										"api",
+										"rest",
+										"version",
+										"57",
+										"merchant",
+										"{{MID}}",
+										"session"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Retrieve Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}",
+					"protocol": "https",
+					"host": [
+						"{{PROD_URL}}"
+					],
+					"path": [
+						"api",
+						"rest",
+						"version",
+						"57",
+						"merchant",
+						"{{MID}}",
+						"order",
+						"{{ORDER_ID}}"
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "Refund",
@@ -2539,7 +2516,7 @@
 					"raw": "{\n    \"apiOperation\": \"REFUND\",\n    \"transaction\": {\n        \"amount\": 500,\n        \"currency\": \"EUR\"\n    }\n}"
 				},
 				"url": {
-					"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+					"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
 					"protocol": "https",
 					"host": [
 						"{{PROD_URL}}"
@@ -2548,7 +2525,7 @@
 						"api",
 						"rest",
 						"version",
-						"54",
+						"57",
 						"merchant",
 						"{{MID}}",
 						"order",
@@ -2646,7 +2623,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "483973da-0987-4b42-81ea-5620ece0fb10",
 						"exec": [
 							""
 						],
@@ -2656,7 +2632,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "80a1e3af-a653-4b03-a03f-f45e240c5103",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"orderId\", jsonData.order.id);"
@@ -2680,7 +2655,7 @@
 					"raw": "{\n    \"apiOperation\": \"VOID\",\n     \"transaction\": {\n     \t\"targetTransactionId\": \"{{LAST_TRANSACTION_ID}}\"\n     }\n}"
 				},
 				"url": {
-					"raw": "https://{{PROD_URL}}/api/rest/version/54/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
+					"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{$guid}}",
 					"protocol": "https",
 					"host": [
 						"{{PROD_URL}}"
@@ -2689,7 +2664,7 @@
 						"api",
 						"rest",
 						"version",
-						"54",
+						"57",
 						"merchant",
 						"{{MID}}",
 						"order",
@@ -2721,7 +2696,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "241a61fd-6d02-4ceb-a519-574b4cd47633",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2731,18 +2705,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "112f5c7b-f7e3-4c85-aa97-86dfad3f62c9",
 				"type": "text/javascript",
 				"exec": [
-					"var jsonData = JSON.parse(responseBody);",
-					"try {",
-					"    postman.setEnvironmentVariable(\"LAST_TRANSACTION_ID\", jsonData.transaction.id)    ",
-					"} catch (e) {",
-					"    console.log(e)",
-					"}"
+					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
