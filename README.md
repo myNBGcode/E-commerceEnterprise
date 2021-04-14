@@ -224,7 +224,7 @@ Enter the card details and all other required details for the transaction
 
 ![card details](images/card_details.png)
 
-In the following 3DS emulator choose &quot;Authentication successful&quot; and press &quot;Submit&quot;
+In the following 3DS emulator choose &quot;Authentication/Account Verification Successful&quot; and press &quot;Submit&quot;
 
 The payment should be completed successfully
 
@@ -232,18 +232,18 @@ The payment should be completed successfully
 
 Enter all required details as before
 
-In the following 3DS emulator choose &quot;Authentication failed&quot; and press &quot;Submit&quot;
+In the following 3DS emulator choose &quot;Not Authenticated&quot; and press &quot;Submit&quot;
 
 The payment should be declined
 
 
-### **Scenario 3:** _Successful transaction with 3DS authentication attempted_
+### **Scenario 3:** _Successful transaction with 3DS authentication cancelled_
 
 Enter all required details as before
 
-In the following 3DS emulator choose &quot;Authentication Attempted&quot; and press &quot;Submit&quot;
+In the following 3DS emulator choose &quot;Authentication Cancelled&quot; and press &quot;Submit&quot;
 
-The payment should be completed successfully
+The payment should be declined
 
 ### **Scenario 4:** _Successful transaction with 3DS authentication unavailable_
 
@@ -522,7 +522,7 @@ CVC: 100 (valid cvc number for the test card)
 
 Create a hosted session with the above card details and provide the session ID to execute a pay call.
 
-After rendering the ACS emulator from the response choose &quot;Authentication successful&quot; and press &quot;Submit&quot;
+After rendering the 3DS html content from the Authenticate Payer call response, choose &quot;Authentication/Account Verification Successful&quot; in the ACS emulator and press &quot;Submit&quot;
 
 The payment should be completed successfully
 
@@ -530,7 +530,7 @@ The payment should be completed successfully
 
 Create a hosted session with the above card details and provide the session ID to execute a pay call.
 
-After rendering the ACS emulator from the response choose &quot;Authentication failed&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Not Authenticated&quot; and press &quot;Submit&quot;
 
 The payment should be declined
 
@@ -538,15 +538,15 @@ The payment should be declined
 
 Create a hosted session with the above card details and provide the session ID to execute a pay call.
 
-After rendering the ACS emulator from the response choose &quot;Authentication Attempted&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Authentication Cancelled&quot; and press &quot;Submit&quot;
 
-The payment should be completed successfully
+The payment should be declined
 
 ### **Scenario 4:** _Successful transaction with 3DS authentication unavailable_
 
 Create a hosted session with the above card details and provide the session ID to execute a pay call.
 
-After rendering the ACS emulator from the response choose &quot;Authentication Not Available&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Authentication Not Available&quot; and press &quot;Submit&quot;
 
 The payment should be successful
 
