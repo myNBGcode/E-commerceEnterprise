@@ -576,9 +576,9 @@ CVC: 100 (valid cvc number for the test card)
 
 ### **Scenario 1:** _Successful transaction with 3DS authentication successful_
 
-Execute a pay call providing the above card details as shown in the documentation.
+Execute a pay flow providing the above card details as shown in the documentation.
 
-After rendering the ACS emulator from the response choose &quot;Authentication successful&quot; and press &quot;Submit&quot;
+After rendering the 3DS html content from the Authenticate Payer call response, choose &quot;Authentication/Account Verification Successful&quot; in the ACS emulator and press &quot;Submit&quot;
 
 The payment should be completed successfully
 
@@ -586,24 +586,24 @@ The payment should be completed successfully
 
 Execute a pay call providing the above card details as shown in the documentation.
 
-After rendering the ACS emulator from the response choose &quot;Authentication failed&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Not Authenticated&quot; and press &quot;Submit&quot;
 
 The payment should be declined
 
 
-### **Scenario 3:** _Successful transaction with 3DS authentication attempted_
+### **Scenario 3:** _Successful transaction with 3DS authentication cancelled_
 
 Execute a pay call providing the above card details as shown in the documentation.
 
-After rendering the ACS emulator from the response choose &quot;Authentication Attempted&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Authentication Cancelled&quot; and press &quot;Submit&quot;
 
-The payment should be completed successfully
+The payment should be declined
 
 ### **Scenario 4:** _Successful transaction with 3DS authentication unavailable_
 
 Execute a pay call providing the above card details as shown in the documentation.
 
-After rendering the ACS emulator from the response choose &quot;Authentication Not Available&quot; and press &quot;Submit&quot;
+After rendering the ACS emulator choose &quot;Authentication Not Available&quot; and press &quot;Submit&quot;
 
 The payment should be successful
 
