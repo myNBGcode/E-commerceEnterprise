@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "326526b9-17ed-43ab-9004-6112f3deea1b",
+		"_postman_id": "940e396b-b294-4f6f-b46c-59adee40f470",
 		"name": "NBG e-Enterprise",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -182,7 +182,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"{{3DS_REDIRECT_URL}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -567,7 +567,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    },\n    \"order\": {\n        \"id\": \"{{$guid}}\"\n    },\n    \"agreement\": {\n    \t\"id\": \"{{$guid}}\",\n    \t\"type\": \"RECURRING\"\n    }\n}"
+							"raw": "{\n   \"sourceOfFunds\": {\n    \t\"token\": \"{{TOKEN_ID}}\",\n    \t\"provided\": {\n    \t\t\"card\": {\n    \t\t\t\"storedOnFile\": \"TO_BE_STORED\"\n    \t\t}\n    \t}\n    },\n    \"order\": {\n        \"id\": \"{{$guid}}\"\n    },\n    \"agreement\": {\n    \t\"id\": \"{{$guid}}\",\n    \t\"type\": \"RECURRING\",\n        \"expiryDate\": \"2022-01-10\",\n        \"recurring\": {\n            \"daysBetweenPayments\": 30\n        }\n    }\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session/{{SESSION_ID}}",
@@ -665,7 +665,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"{{3DS_REDIRECT_URL}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -1298,7 +1298,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 10\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"{{3DS_REDIRECT_URL}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -1610,7 +1610,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 50\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+							"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 50\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": -120\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"{{3DS_REDIRECT_URL}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 						},
 						"url": {
 							"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -2065,7 +2065,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 20\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": 273\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"https://www.nbg.gr\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
+											"raw": "{\n    \"apiOperation\": \"AUTHENTICATE_PAYER\",\n    \"order\": {\n        \"currency\": \"EUR\",\n        \"amount\": 20\n    },\n    \"device\": {\n    \"browser\": \"CHROME\",\n    \"browserDetails\": {\n      \"3DSecureChallengeWindowSize\": \"FULL_SCREEN\",\n      \"acceptHeaders\": \"application/json\",\n      \"colorDepth\": 24,\n      \"javaEnabled\": true,\n      \"language\": \"en-US\",\n      \"screenHeight\": 960,\n      \"screenWidth\": 740,\n      \"timeZone\": 273\n    }\n    },\n    \"authentication\": {\n        \"redirectResponseUrl\": \"{{3DS_REDIRECT_URL}}\"\n    },\n    \"session\": {\n        \"id\": \"{{SESSION_ID}}\"\n    }\n\n}"
 										},
 										"url": {
 											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{ORDER_ID}}/transaction/{{TRXN_ID}}",
@@ -2186,7 +2186,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Initia payment\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    },\r\n    \"agreement\": {\r\n        \"type\": \"RECURRING\",\r\n        \"id\": \"{{$guid}}\"\r\n    }\r\n}"
+											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Initial payment\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    },\r\n    \"agreement\": {\r\n        \"type\": \"RECURRING\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"expiryDate\": \"2022-01-10\",\r\n        \"recurring\": {\r\n            \"daysBetweenPayments\": 30\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
 											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
@@ -2302,7 +2302,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 1,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
+									"raw": "{\n    \"apiOperation\": \"PAY\",\n    \"lineOfBusiness\": \"DONOTENFORCE\",\n    \"order\": {\n        \"amount\": 50,\n        \"currency\": \"EUR\",\n        \"reference\": \"{{$guid}}\"\n    },\n    \"sourceOfFunds\": {\n        \"token\": \"{{TOKEN_ID}}\",\n        \"provided\": {\n            \"card\": {\n                \"storedOnFile\": \"STORED\"\n            }\n        }\n    },\n    \"agreement\": {\n        \"id\": \"{{AGREEMENT_ID}}\"\n    },\n    \"transaction\": {\n        \"source\": \"MERCHANT\"\n    }\n}"
 								},
 								"url": {
 									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/order/{{$guid}}/transaction/{{$guid}}",
