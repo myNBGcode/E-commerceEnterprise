@@ -625,7 +625,7 @@ After completing the test scenarios you can fill this table with the reference n
 
 | Transaction | Card Number | ACS Simulator | Expected Result | Input Data | Test Case | Data  Reference |
 | --- | --- | --- | --- | --- | --- | --- |
-| Auth/Pre | 5123450000000008 |  Authentication/Account Verification Successful | ACCEPTED | Correct Data | 3D-Secure Authenticated     |   |
-| Auth/Pre | 5123450000000008 |  Not Authenticated                              | DECLINED | Correct Data | Not 3D-Secure Authenticated |   |
-| Auth/Pre | 5123450000000008 |  Authentication Cancelled                       | DECLINED | Correct Data | 3D-Secure Cancelled         |   |
-| Auth/Pre | 5123450000000008 |  Authentication not available                   | ACCEPTED | Correct Data | 3D-Secure Unavailable       |   |
+| PAY/AUTHORIZATION | 5123450000000008 |  Authentication/Account Verification Successful | ACCEPTED | Correct Data | 3D-Secure Authenticated     |   |
+| PAY/AUTHORIZATION | 5123450000000008 |  Not Authenticated                              | DECLINED | Correct Data | Not 3D-Secure Authenticated |   |
+| PAY/AUTHORIZATION | 5123450000000008 |  Authentication Cancelled                       | DECLINED | Correct Data | 3D-Secure Cancelled         |   |
+| PAY/AUTHORIZATION | 5123450000000008 |  Authentication not available                   | ACCEPTED | Correct Data | 3D-Secure Unavailable       |   |
