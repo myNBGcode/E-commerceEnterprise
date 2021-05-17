@@ -155,6 +155,7 @@ In order to support payments with installments you need to follow the two step p
     "apiOperation": "CREATE_CHECKOUT_SESSION",
     "lineOfBusiness": "ENFORCE",
     "order": {
+    	"amount": 50,
         "currency": "EUR",
         "id": "Unique order ID",
 	"certainty": "ESTIMATED"
