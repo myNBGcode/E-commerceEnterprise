@@ -215,7 +215,7 @@ The card used in the tests is a test card enrolled with 3DS authentication.
 
 Number: 5123 4500 0000 0008
 
-Exp. Date: 05/21 (this date is used for the test card to be approved)
+Exp. Date: 05/31 (this date is used for the test card to be approved)
 
 CVC: 100 (valid CVC number for the test card)
 
@@ -515,7 +515,7 @@ The card used in the tests is a test card enrolled with 3DS authentication.
 
 Number: 5123 4500 0000 0008
 
-Exp. Date: 05/21 (this date is used for the test card to be approved)
+Exp. Date: 05/31 (this date is used for the test card to be approved)
 
 CVC: 100 (valid cvc number for the test card)
 
@@ -571,7 +571,7 @@ The card used in the tests is a test card enrolled with 3DS authentication.
 
 Number: 5123 4500 0000 0008
 
-Exp. Date: 05/21 (this date is used for the test card to be approved)
+Exp. Date: 05/31 (this date is used for the test card to be approved)
 
 CVC: 100 (valid cvc number for the test card)
 
