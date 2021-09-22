@@ -1809,7 +1809,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Test order\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    }\r\n}"
+											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Test order\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.gr/cancel\",\r\n        \"returnUrl\": \"https://www.nbg.gr/complete\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    }\r\n}"
 										},
 										"url": {
 											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
@@ -2186,7 +2186,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Initial payment\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    },\r\n    \"agreement\": {\r\n        \"type\": \"RECURRING\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"expiryDate\": \"2022-01-10\",\r\n        \"recurring\": {\r\n            \"daysBetweenPayments\": 30\r\n        }\r\n    }\r\n}"
+											"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"description\": \"Initial payment\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"cancelUrl\": \"https://www.nbg.gr/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }        \r\n    },\r\n    \"agreement\": {\r\n        \"type\": \"RECURRING\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"expiryDate\": \"2022-01-10\",\r\n        \"recurring\": {\r\n            \"daysBetweenPayments\": 30\r\n        }\r\n    }\r\n}"
 										},
 										"url": {
 											"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
@@ -2338,9 +2338,10 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"var jsonData = JSON.parse(responseBody);",
-											"postman.setEnvironmentVariable(\"SESSION_ID\", jsonData.session.id);",
-											""
+											"var jsonDataReq = JSON.parse(pm.request.body.raw);",
+											"var jsonDataResp = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"ORDER_ID\", jsonDataReq.order.id);",
+											"postman.setEnvironmentVariable(\"SESSION_ID\", jsonDataResp.session.id);"
 										],
 										"type": "text/javascript"
 									}
@@ -2358,7 +2359,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\",\r\n        \"certainty\": \"ESTIMATED\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"AUTHORIZE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
+									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\",\r\n        \"certainty\": \"ESTIMATED\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"AUTHORIZE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.gr/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.gr/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
@@ -2449,7 +2450,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.com/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.com/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
+									"raw": "{\r\n    \"apiOperation\": \"CREATE_CHECKOUT_SESSION\",\r\n    \"lineOfBusiness\": \"ENFORCE\",\r\n    \"order\": {\r\n        \"amount\": 50,\r\n        \"currency\": \"EUR\",\r\n        \"description\": \"Order payment\",\r\n        \"id\": \"{{$guid}}\",\r\n        \"reference\": \"{{$guid}}\"\r\n    },\r\n    \"interaction\": {\r\n        \"operation\": \"PURCHASE\",\r\n        \"merchant\": {\r\n            \"name\": \"TEST\"\r\n        },\r\n        \"returnUrl\": \"https://www.nbg.gr/complete\",\r\n        \"cancelUrl\": \"https://www.nbg.gr/cancel\",\r\n        \"displayControl\": {\r\n            \"billingAddress\": \"HIDE\"\r\n        }\r\n    }\r\n}"
 								},
 								"url": {
 									"raw": "https://{{PROD_URL}}/api/rest/version/57/merchant/{{MID}}/session",
